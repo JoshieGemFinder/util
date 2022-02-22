@@ -280,7 +280,7 @@ function setup() {}
 function draw() {}
 function keyPressed() {}
 
-window.addEventListener('DOMContentLoaded', function() {
+let load = function() {
     setup()
     setTimeout(redraw, 1)
     window.addEventListener('keydown', function(e) {
@@ -292,4 +292,10 @@ window.addEventListener('DOMContentLoaded', function() {
         mouseX = e.clientX
         mouseY = e.clientY
     })
-})
+}
+
+if (document.readyState === "complete") { 
+    load()
+} else {
+    window.addEventListener('DOMContentLoaded', load)
+}
